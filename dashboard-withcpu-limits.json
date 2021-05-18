@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": 12171,
   "graphTooltip": 0,
-  "id": 29,
-  "iteration": 1621356364088,
+  "id": 31,
+  "iteration": 1621360325523,
   "links": [],
   "panels": [
     {
@@ -97,11 +97,12 @@
       "pluginVersion": "7.5.5",
       "targets": [
         {
-          "expr": " (sum(container_memory_working_set_bytes{image!=\"\",cluster=\"$cluster\", namespace=\"$namespace\"}) by (pod_name))",
+          "exemplar": true,
+          "expr": " (sum(container_memory_working_set_bytes{image!=\"\",cluster=\"$cluster\", namespace=\"$namespace\"}))",
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{pod_name}}",
+          "legendFormat": "Memory",
           "refId": "A"
         }
       ],
@@ -1095,34 +1096,9 @@
               }
             ]
           },
-          "unit": "hertz"
+          "unit": "decbytes"
         },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "openebs-monitoring-prometheus-node-exporter-xhn58"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "graph": true,
-                  "legend": false,
-                  "tooltip": false
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
@@ -1145,7 +1121,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\"}[5m])) by (pod) * 100",
+          "expr": " (sum(container_memory_working_set_bytes{image!=\"\",cluster=\"$cluster\", namespace=\"$namespace\"}) by (pod))",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -1198,32 +1174,7 @@
           },
           "unit": "hertz"
         },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "openebs-monitoring-prometheus-node-exporter-xhn58"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "graph": true,
-                  "legend": false,
-                  "tooltip": false
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
@@ -1479,8 +1430,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "openebs",
-          "value": "openebs"
+          "text": "test-dashboard",
+          "value": "test-dashboard"
         },
         "description": null,
         "error": null,
@@ -1491,7 +1442,7 @@
         "name": "namespace",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "openebs",
             "value": "openebs"
           },
@@ -1501,7 +1452,7 @@
             "value": "default"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "test-dashboard",
             "value": "test-dashboard"
           }
@@ -1531,7 +1482,7 @@
     ]
   },
   "timezone": "",
-  "title": "New OpenEBS Dashboard 2",
-  "uid": "96KrOYCAy",
+  "title": "New OpenEBS Dashboard 3",
+  "uid": "96KrOYewq",
   "version": 1
 }
