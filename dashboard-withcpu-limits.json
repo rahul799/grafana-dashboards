@@ -17,105 +17,11 @@
   "gnetId": 12171,
   "graphTooltip": 0,
   "id": 31,
-  "iteration": 1621360325523,
+  "iteration": 1621360325529,
   "links": [],
   "panels": [
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
-      "description": "This panel shows mem usage of  pods across $namespace in $cluster cluster.\n\nMemory utilization is easily tracked with container_memory_usage_bytes, however, this metric also includes cached (think filesystem cache) items that can be evicted under memory pressure. That's why we are using a  better metric: container_memory_working_set_bytes as this is what the OOM killer is watching for.\n",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": -1,
-            "drawStyle": "line",
-            "fillOpacity": 80,
-            "gradientMode": "opacity",
-            "hideFrom": {
-              "graph": false,
-              "legend": false,
-              "tooltip": false
-            },
-            "lineInterpolation": "smooth",
-            "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true
-          },
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "decbytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 8,
-        "x": 0,
-        "y": 0
-      },
-      "id": 14,
-      "links": [],
-      "options": {
-        "graph": {},
-        "legend": {
-          "calcs": [
-            "mean",
-            "lastNotNull",
-            "max",
-            "min",
-            "sum"
-          ],
-          "displayMode": "table",
-          "placement": "bottom"
-        },
-        "tooltipOptions": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "7.5.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": " (sum(container_memory_working_set_bytes{image!=\"\",cluster=\"$cluster\", namespace=\"$namespace\"}))",
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "Memory",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Memory usage by Pods in $namespace  in $cluster cluster",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
-      "description": "This panel shows mem usage of  pods across $namespace in $cluster cluster.\n\nMemory utilization is easily tracked with container_memory_usage_bytes, however, this metric also includes cached (think filesystem cache) items that can be evicted under memory pressure. That's why we are using a  better metric: container_memory_working_set_bytes as this is what the OOM killer is watching for.\n",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -126,23 +32,82 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 69,
-            "gradientMode": "opacity",
+            "fillOpacity": 45,
+            "gradientMode": "none",
             "hideFrom": {
               "graph": false,
               "legend": false,
               "tooltip": false
             },
-            "lineInterpolation": "smooth",
-            "lineWidth": 2,
-            "pointSize": 5,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 1,
             "scaleDistribution": {
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true
+            "spanNulls": false
           },
-          "mappings": [],
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "Online",
+              "to": "",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": 2,
+              "text": "Offline",
+              "to": "",
+              "type": 1,
+              "value": "0"
+            },
+            {
+              "from": "",
+              "id": 3,
+              "text": "Degraded",
+              "to": "",
+              "type": 1,
+              "value": "2"
+            },
+            {
+              "from": "",
+              "id": 4,
+              "text": "Faulted",
+              "to": "",
+              "type": 1,
+              "value": "3"
+            },
+            {
+              "from": "",
+              "id": 5,
+              "text": "Removed",
+              "to": "",
+              "type": 1,
+              "value": "4"
+            },
+            {
+              "from": "",
+              "id": 6,
+              "text": "Unavail",
+              "to": "",
+              "type": 1,
+              "value": "5"
+            },
+            {
+              "from": "",
+              "id": 7,
+              "text": "No Pools Available",
+              "to": "",
+              "type": 1,
+              "value": "6"
+            }
+          ],
+          "max": 6,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -155,30 +120,21 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "percent"
+          }
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 12,
-        "w": 8,
-        "x": 8,
+        "h": 8,
+        "w": 12,
+        "x": 0,
         "y": 0
       },
-      "id": 41,
-      "links": [],
+      "id": 51,
       "options": {
-        "graph": {},
         "legend": {
-          "calcs": [
-            "mean",
-            "lastNotNull",
-            "max",
-            "min",
-            "sum"
-          ],
-          "displayMode": "table",
+          "calcs": [],
+          "displayMode": "list",
           "placement": "bottom"
         },
         "tooltipOptions": {
@@ -189,18 +145,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\"}[1m])) * 100",
+          "expr": "openebs_pool_status{namespace=\"$namespace\"}",
           "instant": false,
           "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "CPU usage",
+          "legendFormat": "{{pool}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "CPU usage by Pods in $namespace  in $cluster cluster",
-      "transparent": true,
+      "title": "Pool Status",
       "type": "timeseries"
     },
     {
@@ -298,6 +250,189 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "pod count by nodes of $namespace in $cluster cluster",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "description": "This panel shows mem usage of  pods across $namespace in $cluster cluster.\n\nMemory utilization is easily tracked with container_memory_usage_bytes, however, this metric also includes cached (think filesystem cache) items that can be evicted under memory pressure. That's why we are using a  better metric: container_memory_working_set_bytes as this is what the OOM killer is watching for.\n",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": -1,
+            "drawStyle": "line",
+            "fillOpacity": 80,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 8,
+        "x": 0,
+        "y": 8
+      },
+      "id": 14,
+      "links": [],
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min",
+            "sum"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": " (sum(container_memory_working_set_bytes{image!=\"\",cluster=\"$cluster\", namespace=\"$namespace\"}))",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Memory",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Memory usage by Pods in $namespace  in $cluster cluster",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "description": "This panel shows mem usage of  pods across $namespace in $cluster cluster.\n\nMemory utilization is easily tracked with container_memory_usage_bytes, however, this metric also includes cached (think filesystem cache) items that can be evicted under memory pressure. That's why we are using a  better metric: container_memory_working_set_bytes as this is what the OOM killer is watching for.\n",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 69,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 8,
+        "x": 8,
+        "y": 8
+      },
+      "id": 41,
+      "links": [],
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min",
+            "sum"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\"}[1m])) * 100",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "CPU usage",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "CPU usage by Pods in $namespace  in $cluster cluster",
       "transparent": true,
       "type": "timeseries"
     },
@@ -506,7 +641,7 @@
         "h": 8,
         "w": 20,
         "x": 0,
-        "y": 12
+        "y": 20
       },
       "id": 43,
       "options": {
@@ -599,6 +734,81 @@
       "type": "table"
     },
     {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "semi-dark-red",
+                "value": 300
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 20,
+        "y": 20
+      },
+      "id": 48,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\"}[1m])) * 100 ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "CPU used",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(rate(kube_pod_container_resource_requests_cpu_cores{namespace=\"$namespace\"}[1m])) * 100 ",
+          "interval": "",
+          "legendFormat": "CPU requests",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(rate(kube_pod_container_resource_limits_cpu_cores{namespace=\"$namespace\"}[1m])) * 100 ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "CPU limits",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "CPU details in namespace $namespace",
+      "type": "stat"
+    },
+    {
       "cacheTimeout": null,
       "datasource": "Prometheus",
       "fieldConfig": {
@@ -649,37 +859,8 @@
             },
             "properties": [
               {
-                "id": "custom.width",
-                "value": 88
-              },
-              {
                 "id": "custom.displayMode",
-                "value": "color-text"
-              },
-              {
-                "id": "mappings",
-                "value": [
-                  {
-                    "from": "",
-                    "id": 1,
-                    "operator": "",
-                    "text": "",
-                    "to": "",
-                    "type": 1
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "namespace"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 200
+                "value": "color-background"
               }
             ]
           }
@@ -689,7 +870,7 @@
         "h": 8,
         "w": 11,
         "x": 0,
-        "y": 20
+        "y": 28
       },
       "id": 30,
       "links": [],
@@ -705,7 +886,8 @@
       "pluginVersion": "7.5.5",
       "targets": [
         {
-          "expr": "kube_persistentvolumeclaim_status_phase{cluster=\"$cluster\"}",
+          "exemplar": true,
+          "expr": "kube_persistentvolume_status_phase{cluster=\"$cluster\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -722,9 +904,9 @@
           "options": {
             "include": {
               "names": [
-                "namespace",
-                "persistentvolumeclaim",
-                "phase"
+                "phase",
+                "pod",
+                "persistentvolume"
               ]
             }
           }
@@ -762,7 +944,7 @@
         "h": 4,
         "w": 3,
         "x": 11,
-        "y": 20
+        "y": 28
       },
       "id": 22,
       "interval": null,
@@ -846,7 +1028,7 @@
         "h": 4,
         "w": 3,
         "x": 14,
-        "y": 20
+        "y": 28
       },
       "id": 24,
       "interval": null,
@@ -886,81 +1068,6 @@
       "timeShift": null,
       "title": "Terminated pods",
       "transparent": true,
-      "type": "stat"
-    },
-    {
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "semi-dark-red",
-                "value": 300
-              }
-            ]
-          },
-          "unit": "decbytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 4,
-        "x": 20,
-        "y": 20
-      },
-      "id": 48,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.5.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\"}[1m]))",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "CPU used",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(rate(kube_pod_container_resource_requests_cpu_cores{namespace=\"$namespace\"}[1m])) ",
-          "interval": "",
-          "legendFormat": "CPU requests",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(rate(kube_pod_container_resource_limits_cpu_cores{namespace=\"$namespace\"}[1m]))",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "CPU limits",
-          "refId": "C"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "CPU details in namespace $namespace",
       "type": "stat"
     },
     {
@@ -1104,7 +1211,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 36
       },
       "id": 46,
       "options": {
@@ -1131,7 +1238,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "CPU  details in namespace $namespace",
+      "title": "Memory  details in namespace $namespace",
       "type": "timeseries"
     },
     {
@@ -1180,7 +1287,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 41
+        "y": 44
       },
       "id": 49,
       "options": {
@@ -1287,7 +1394,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 49
+        "y": 52
       },
       "id": 16,
       "links": [],
@@ -1430,8 +1537,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "test-dashboard",
-          "value": "test-dashboard"
+          "text": "openebs",
+          "value": "openebs"
         },
         "description": null,
         "error": null,
@@ -1442,7 +1549,7 @@
         "name": "namespace",
         "options": [
           {
-            "selected": false,
+            "selected": true,
             "text": "openebs",
             "value": "openebs"
           },
@@ -1452,7 +1559,7 @@
             "value": "default"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "test-dashboard",
             "value": "test-dashboard"
           }
@@ -1484,5 +1591,5 @@
   "timezone": "",
   "title": "New OpenEBS Dashboard 3",
   "uid": "96KrOYewq",
-  "version": 1
+  "version": 5
 }
